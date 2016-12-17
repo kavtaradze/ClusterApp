@@ -16,6 +16,10 @@ class CreateNotesTable extends Migration
         Schema::create('notes', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
+            $table->text("description");
+            $table->boolean("archived");
+            $table->boolean("completed");
+            $table->text("color");
         });
     }
 
