@@ -1,8 +1,7 @@
 @extends("layout")
 
 @section('content')
-    hello world!
-    <button class="btn btn-primary">I'm Button</button>
+    <a href="/archives" class="btn btn-primary">Archives</a>
     <!--aa me vaketeb? es boots ragacaa? bootstrap daikide manmetn rato daikido barem iswavli  -->
     <form  method="post" action="/create">
         {{csrf_field()}}
@@ -21,12 +20,28 @@
         <button type="submit" class="btn btn-default">შენახვა</button>
     </form>
 
-    <h2>ჩანაწერები</h2>
-    @foreach($notes as $note)
+    <h2>დასრულებულები</h2>
+
+    @forelse($completed as $note)
         <div class="alert alert-{{$note->color}}">
             {{$note->description}}
         </div>
-    @endforeach
+    @empty
+        <div class="alert alert-primary">
+            {{"არაფერი არაა სმნ"}}
+        </div>
+    @endforelse
+
+    <h2>მიმდინარე</h2>
+    @forelse($current as $note)
+        <div class="alert alert-{{$note->color}}">
+            {{$note->description}}
+        </div>
+    @empty
+        <div class="alert alert-primary">
+            {{"არაფერი არაა სმნ"}}
+        </div>
+    @endforelse
 
 @endsection
 

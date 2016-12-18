@@ -13,3 +13,7 @@
 
 Route::get('/', "MainController@index");
 Route::post('create', 'MainController@create');
+Route::get('archives', 'MainController@archives');
+Route::get('archive/{note}', 'MainController@archive');
+Route::get('complete/{note}', 'MainController@complete');
+Route::get('delete/{note}', 'MainController@delete');
