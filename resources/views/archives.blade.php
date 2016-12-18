@@ -5,7 +5,7 @@
 
     <h1>არქივის სია</h1>
     @foreach($notes as $note)
-        <div class="alert alert-{{$note->color}}">
+        <div class="note bg-{{$note->color}}">
             {{$note->description}}
         </div>
     @endforeach

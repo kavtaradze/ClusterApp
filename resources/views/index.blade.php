@@ -1,9 +1,9 @@
 @extends("layout")
 
 @section('content')
-    <a href="/archives" class="btn btn-primary">Archives</a>
+    <a href="archives" class="btn btn-primary">Archives</a>
     <!--aa me vaketeb? es boots ragacaa? bootstrap daikide manmetn rato daikido barem iswavli  -->
-    <form  method="post" action="/create">
+    <form  method="post" action="create">
         {{csrf_field()}}
         <label for="description">აღწერა</label>
         <textarea class="form-control" rows="3" name="description" id="description"></textarea>
@@ -20,26 +20,26 @@
         <button type="submit" class="btn btn-default">შენახვა</button>
     </form>
 
-    <h2>დასრულებულები</h2>
-
-    @forelse($completed as $note)
-        <div class="alert alert-{{$note->color}}">
+    <h2>მიმდინარე</h2>
+    @forelse($current as $note)
+        <div class="note bg-{{$note->color}}">
             {{$note->description}}
         </div>
     @empty
-        <div class="alert alert-primary">
-            {{"არაფერი არაა სმნ"}}
+        <div class="alert alert-danger">
+            ჩანაწერები ვერ მოიძებნა
         </div>
     @endforelse
 
-    <h2>მიმდინარე</h2>
-    @forelse($current as $note)
-        <div class="alert alert-{{$note->color}}">
+    <h2>დასრულებულები</h2>
+
+    @forelse($completed as $note)
+        <div class="note bg-{{$note->color}}">
             {{$note->description}}
         </div>
     @empty
-        <div class="alert alert-primary">
-            {{"არაფერი არაა სმნ"}}
+        <div class="alert alert-danger">
+            ჩანაწერები ვერ მოიძებნა
         </div>
     @endforelse
 
