@@ -24,6 +24,11 @@
     @forelse($current as $note)
         <div class="note bg-{{$note->color}}">
             {{$note->description}}
+            <br>
+            <br>
+            <a href="/complete/{{$note->id}}" class="btn btn-default btn-sm">დასრულება</a>
+            <a href="/archive/{{$note->id}}" class="btn btn-default btn-sm">არქივი</a>
+            <a href="/delete/{{$note->id}}" class="btn btn-default btn-sm">წაშლა</a>
         </div>
     @empty
         <div class="alert alert-danger">
@@ -36,6 +41,11 @@
     @forelse($completed as $note)
         <div class="note bg-{{$note->color}}">
             {{$note->description}}
+            <br>
+            <br>
+            <a href="/current/{{$note->id}}" class="btn btn-default btn-sm">მიმდინარე</a>
+            <a href="/archive/{{$note->id}}" class="btn btn-default btn-sm">არქივი</a>
+            <a href="/delete/{{$note->id}}" class="btn btn-default btn-sm">წაშლა</a>
         </div>
     @empty
         <div class="alert alert-danger">
