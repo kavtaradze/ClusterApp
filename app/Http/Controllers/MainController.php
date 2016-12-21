@@ -9,8 +9,8 @@ use App\Note;
 class MainController extends Controller
 {
     public function index(){
-        $completed = Note::where("completed", true)->get();
-        $current = Note::where("completed", false)->get();
+        $completed = Note::where(["completed" => true, 'archived' => false])->get();
+        $current = Note::where(["completed" => false, 'archived' => false])->get();
 
         return view("index",compact("current"), compact('completed'));
     }
@@ -22,22 +22,37 @@ class MainController extends Controller
          $note->archived = false;
          $note->completed = false;
          $note->save();
-         //dd($note);
          return back();
     }
     public function archives() {
-        $notes = Note::where("archived", true)->get();
-        return view("archives",compact("notes"));
+      $completed = Note::where(["completed" => true, 'archived' => true])->get();
+      $current = Note::where(["completed" => false, 'archived' => true])->get();
+
+        return view("archives",compact("current"), compact('completed'));
     }
     public function archive(Note $note) {
         $note->archived = true;
         $note->save();
+        return back();
+    }
+    public function present(Note $note) {
+        $note->archived = false;
+        $note->save();
+        return back();
     }
     public function complete(Note $note) {
         $note->completed = true;
         $note->save();
+        return back();
     }
+    public function current(Note $note) {
+        $note->completed = false;
+        $note->save();
+        return back();
+    }
+
     public function delete(Note $note) {
         $note->delete();
+        return back();
     }
 }

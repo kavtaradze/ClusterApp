@@ -15,5 +15,7 @@ Route::get('/', "MainController@index");
 Route::post('create', 'MainController@create');
 Route::get('archives', 'MainController@archives');
 Route::get('archive/{note}', 'MainController@archive');
+Route::get('present/{note}', 'MainController@present');
 Route::get('complete/{note}', 'MainController@complete');
+Route::get('current/{note}', 'MainController@current');
 Route::get('delete/{note}', 'MainController@delete');
