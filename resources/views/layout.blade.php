@@ -29,7 +29,13 @@
   <body>
     <div class="container">
         @yield("content")
+
+    <br>
+    <br>
+    server name: <?php echo env("NODE_NAME"); ?>
     </div>
+
+    
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="js/jquery.min.js"></script>
